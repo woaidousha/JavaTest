@@ -7,7 +7,7 @@ public class ShellSort {
     public static void main(String args[]) {
         int array[] = {321, 43, 56, 874, 32, 1, 6, 44, 745, 32, 54, 54, 23};
 //        int array[] = {9};
-        shellSort4(array);
+        shellSort5(array);
         System.out.println(Arrays.toString(array));
     }
 
@@ -113,4 +113,25 @@ public class ShellSort {
             step = (step - 1) / 3;
         }
     }
+
+    private static void shellSort5(int array[]) {
+        int step = 1;
+        while (step > array.length / 3) {
+            step = step * 3 + 1;
+        }
+        while (step > 0) {
+            int temp = 0;
+            for (int i = step; i < array.length; i++) {
+                temp = array[i];
+                int j = i;
+                while (j > step - 1 && array[j - step] > temp) {
+                    array[j] = array[j - step];
+                    j -= step;
+                }
+                array[j] = temp;
+            }
+            step = (step - 1) / 3;
+        }
+    }
+
 }

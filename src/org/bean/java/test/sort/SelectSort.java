@@ -7,7 +7,7 @@ public class SelectSort {
     public static void main(String args[]) {
         int array[] = {321,43,56,874,32,1,6,44,745,32,54,54,23};
 //        int array[] = {9};
-        selectSort(array);
+        selectSort1(array);
         System.out.println(Arrays.toString(array));
     }
 
@@ -27,4 +27,18 @@ public class SelectSort {
         }
     }
 
+    private static void selectSort1(int array[]) {
+        for (int i = 0; i < array.length; i++) {
+            int max = array[i];
+            int position = i;
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[j] > max) {
+                    max = array[j];
+                    position = j;
+                }
+            }
+            array[position] = array[i];
+            array[i] = max;
+        }
+    }
 }
