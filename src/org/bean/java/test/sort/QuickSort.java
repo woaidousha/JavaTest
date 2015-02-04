@@ -7,7 +7,7 @@ public class QuickSort {
     public static void main(String args[]) {
         int array[] = {321,43,56,874,32,1,6,44,745,32,54,54,23};
 //        int array[] = {9};
-        quickSort2(array, 0, array.length - 1);
+        quickSort3(array, 0, array.length - 1);
         System.out.println(Arrays.toString(array));
     }
 
@@ -86,6 +86,35 @@ public class QuickSort {
         }
         if (height > index) {
             quickSort2(array, index + 1, height);
+        }
+    }
+
+    public static int partion3(int array[], int low, int height) {
+        int pivot = array[low];
+        while (low < height) {
+            while (low < height && array[height] >= pivot) {
+                height--;
+            }
+            if (low < height) {
+                array[low] = array[height];
+            }
+            while (low < height && array[low] <= pivot) {
+                low++;
+            }
+            if (low < height) {
+                array[height] = array[low];
+            }
+        }
+        array[low] = pivot;
+        System.out.println(Arrays.toString(array));
+        return low;
+    }
+
+    public static void quickSort3(int array[], int low, int height) {
+        if (low < height) {
+            int index = partion3(array, low, height);
+            quickSort3(array, low, index - 1);
+            quickSort3(array, index + 1, height);
         }
     }
 }

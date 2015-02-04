@@ -39,6 +39,7 @@ public class SelectSort {
             }
             array[position] = array[i];
             array[i] = max;
+            System.out.println(Arrays.toString(array));
         }
     }
 }

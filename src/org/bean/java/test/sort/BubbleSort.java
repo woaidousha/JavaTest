@@ -7,7 +7,7 @@ public class BubbleSort {
     public static void main(String args[]) {
         int array[] = {321,43,56,874,32,1,6,44,745,32,54,54,23};
 //        int array[] = {9};
-        bubbleSort2(array);
+        bubbleSort4(array);
         System.out.println(Arrays.toString(array));
     }
 
@@ -56,6 +56,19 @@ public class BubbleSort {
                     array[j] = temp;
                 }
             }
+        }
+    }
+
+    private static void bubbleSort4(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i; j < array.length; j++) {
+                if (array[i] > array[j]) {
+                    int temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+            System.out.println(Arrays.toString(array));
         }
     }
 }
