@@ -1,13 +1,14 @@
 package org.bean.java.test.sort;
 
+import org.bean.java.test.ArrayTool;
+
 import java.util.Arrays;
 
 public class InsertSort {
 
     public static void main(String args[]) {
-        int array[] = {321,43,56,874,32,1,6,44,745,32,54,54,23};
-//        int array[] = {9};
-        insertSort2(array);
+        int array[] = ArrayTool.buildArray();
+        insertSort4(array);
         System.out.println(Arrays.toString(array));
     }
 
@@ -48,6 +49,14 @@ public class InsertSort {
                 int temp = array[j - 1];
                 array[j - 1] = array[j];
                 array[j] = temp;
+            }
+        }
+    }
+
+    public static void insertSort4(int array[]) {
+        for (int i = 1; i < array.length; i++) {
+            for (int j = i; j > 0 && array[j - 1] > array[j]; j--) {
+                ArrayTool.swap(array, j - 1, j);
             }
         }
     }

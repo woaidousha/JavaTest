@@ -1,13 +1,14 @@
 package org.bean.java.test.sort;
 
+import org.bean.java.test.ArrayTool;
+
 import java.util.Arrays;
 
 public class BubbleSort {
 
     public static void main(String args[]) {
-        int array[] = {321,43,56,874,32,1,6,44,745,32,54,54,23};
-//        int array[] = {9};
-        bubbleSort4(array);
+        int array[] = ArrayTool.buildArray();
+        bubbleSort5(array);
         System.out.println(Arrays.toString(array));
     }
 
@@ -69,6 +70,17 @@ public class BubbleSort {
                 }
             }
             System.out.println(Arrays.toString(array));
+        }
+    }
+
+    public static void bubbleSort5(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i; j < array.length; j++) {
+                if (array[i] > array[j]) {
+                    ArrayTool.swap(array, i, j);
+                    System.out.println(Arrays.toString(array));
+                }
+            }
         }
     }
 }

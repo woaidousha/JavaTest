@@ -1,13 +1,14 @@
 package org.bean.java.test.sort;
 
+import org.bean.java.test.ArrayTool;
+
 import java.util.Arrays;
 
 public class QuickSort {
 
     public static void main(String args[]) {
-        int array[] = {321,43,56,874,32,1,6,44,745,32,54,54,23};
-//        int array[] = {9};
-        quickSort3(array, 0, array.length - 1);
+        int array[] = ArrayTool.buildArray();
+        quickSort4(array, 0, array.length - 1);
         System.out.println(Arrays.toString(array));
     }
 
@@ -116,5 +117,29 @@ public class QuickSort {
             quickSort3(array, low, index - 1);
             quickSort3(array, index + 1, height);
         }
+    }
+
+    public static void quickSort4(int[] array, int low, int height) {
+        if (low < height) {
+            int index = partion4(array, low, height);
+            quickSort4(array, low, index - 1);
+            quickSort4(array, index + 1, height);
+        }
+    }
+
+    public static int partion4(int[] array, int low, int height) {
+        int pivot = array[low];
+        while (low < height) {
+            while (low < height && array[height] >= pivot) {
+                height--;
+            }
+            array[low] = array[height];
+            while (low < height && array[low] < pivot) {
+                low++;
+            }
+            array[height] = array[low];
+        }
+        array[low] = pivot;
+        return low;
     }
 }

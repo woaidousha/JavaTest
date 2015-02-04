@@ -1,13 +1,14 @@
 package org.bean.java.test.sort;
 
+import org.bean.java.test.ArrayTool;
+
 import java.util.Arrays;
 
 public class SelectSort {
 
     public static void main(String args[]) {
-        int array[] = {321,43,56,874,32,1,6,44,745,32,54,54,23};
-//        int array[] = {9};
-        selectSort1(array);
+        int array[] = ArrayTool.buildArray();
+        selectSort2(array);
         System.out.println(Arrays.toString(array));
     }
 
@@ -40,6 +41,20 @@ public class SelectSort {
             array[position] = array[i];
             array[i] = max;
             System.out.println(Arrays.toString(array));
+        }
+    }
+
+    private static void selectSort2(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            int max = array[i];
+            int position = i;
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[j] > max) {
+                    max = array[j];
+                    position = j;
+                }
+            }
+            ArrayTool.swap(array, position, i);
         }
     }
 }
