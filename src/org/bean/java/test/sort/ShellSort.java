@@ -116,7 +116,7 @@ public class ShellSort {
 
     private static void shellSort5(int array[]) {
         int step = 1;
-        while (step > array.length / 3) {
+        while (step < array.length / 3) {
             step = step * 3 + 1;
         }
         while (step > 0) {
