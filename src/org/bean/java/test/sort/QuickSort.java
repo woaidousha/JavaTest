@@ -8,7 +8,7 @@ public class QuickSort {
 
     public static void main(String args[]) {
         int array[] = ArrayTool.buildArray();
-        quickSort4(array, 0, array.length - 1);
+        QuickSort5.quickSort(array, 0, array.length - 1);
         System.out.println(Arrays.toString(array));
     }
 
@@ -141,5 +141,31 @@ public class QuickSort {
         }
         array[low] = pivot;
         return low;
+    }
+
+    static class QuickSort5 {
+        public static void quickSort(int[] array, int low, int height) {
+            if (low < height) {
+                int index = partion(array, low, height);
+                quickSort(array, low, index - 1);
+                quickSort(array, index + 1, height);
+            }
+        }
+
+        public static int partion(int[] array, int low, int height) {
+            int pivot = array[low];
+            while (low < height) {
+                while (low < height && array[height] >= pivot) {
+                    height--;
+                }
+                array[low] = array[height];
+                while (low < height && array[low] < pivot) {
+                    low++;
+                }
+                array[height] = array[low];
+            }
+            array[low] = pivot;
+            return low;
+        }
     }
 }

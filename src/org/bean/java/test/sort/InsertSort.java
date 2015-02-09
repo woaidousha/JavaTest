@@ -8,7 +8,7 @@ public class InsertSort {
 
     public static void main(String args[]) {
         int array[] = ArrayTool.buildArray();
-        insertSort4(array);
+        insertSort5(array);
         System.out.println(Arrays.toString(array));
     }
 
@@ -54,6 +54,14 @@ public class InsertSort {
     }
 
     public static void insertSort4(int array[]) {
+        for (int i = 1; i < array.length; i++) {
+            for (int j = i; j > 0 && array[j - 1] > array[j]; j--) {
+                ArrayTool.swap(array, j - 1, j);
+            }
+        }
+    }
+
+    public static void insertSort5(int array[]) {
         for (int i = 1; i < array.length; i++) {
             for (int j = i; j > 0 && array[j - 1] > array[j]; j--) {
                 ArrayTool.swap(array, j - 1, j);
