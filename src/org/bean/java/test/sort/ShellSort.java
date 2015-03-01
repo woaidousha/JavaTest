@@ -9,7 +9,7 @@ public class ShellSort {
     public static void main(String args[]) {
         int array[] = ArrayTool.buildArray();
         System.out.println(Arrays.toString(array));
-        shellSort8(array);
+        shellSort9(array);
         System.out.println(Arrays.toString(array));
     }
 
@@ -171,6 +171,19 @@ public class ShellSort {
         while (step > 0) {
             for (int i = step; i < array.length; i++) {
                 for (int j = i; j > step - 1 && array[j - step] > array[j]; j -= step) {
+                    ArrayTool.swap(array, j, j - step);
+                }
+            }
+            step /= 2;
+        }
+    }
+
+    public static void shellSort9(int array[]) {
+        int step = array.length / 2;
+
+        while (step > 0) {
+            for (int i = step; i < array.length; i++) {
+                for (int j = i; j > step - 1 && array[j] < array[j - step]; j -= step) {
                     ArrayTool.swap(array, j, j - step);
                 }
             }

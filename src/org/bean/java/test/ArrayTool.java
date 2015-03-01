@@ -1,5 +1,6 @@
 package org.bean.java.test;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class ArrayTool {
@@ -7,10 +8,10 @@ public class ArrayTool {
     public static int[] buildArray() {
         Random random = new Random();
         random.setSeed(System.currentTimeMillis());
-        int length = random.nextInt(30);
+        int length = Math.abs(random.nextInt()) % 10;
         int array[] = new int[length];
         for (int i = 0; i < length; i++) {
-            array[i] = random.nextInt(length);
+            array[i] = Math.abs(random.nextInt()) % 50;
         };
         return array;
     }
@@ -19,5 +20,9 @@ public class ArrayTool {
         int temp = array[i];
         array[i] = array[j];
         array[j] = temp;
+    }
+
+    public static void print(int array[]) {
+        System.out.println(Arrays.toString(array));
     }
 }

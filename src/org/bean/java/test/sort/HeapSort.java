@@ -9,7 +9,7 @@ public class HeapSort {
     public static void main(String args[]) {
         int[] array = ArrayTool.buildArray();
         System.out.println(Arrays.toString(array));
-        Sort1.heapSort(array);
+        Sort4.heapSort(array);
         System.out.println(Arrays.toString(array));
     }
 
@@ -181,5 +181,42 @@ public class HeapSort {
             }
         }
 
+    }
+
+    static class Sort4 {
+
+        public static void heapSort(int array[]) {
+            buildMaxHeap(array);
+
+            ArrayTool.print(array);
+            System.out.println("============================");
+            for (int i = array.length - 1; i >= 0; i--) {
+                ArrayTool.swap(array, 0, i);
+                heapAdjust(array, i, 0);
+            }
+        }
+
+        public static void buildMaxHeap(int array[]) {
+            for (int i = array.length / 2; i >= 0; i--) {
+                heapAdjust(array, array.length, i);
+            }
+        }
+
+        public static void heapAdjust(int array[], int heapSize, int index) {
+            int left = index * 2;
+            int right = index * 2 + 1;
+            int largest = index;
+
+            if (left < heapSize && array[largest] < array[left]) {
+                largest = left;
+            }
+            if (right < heapSize && array[largest] < array[right]) {
+                largest = right;
+            }
+            if (largest != index) {
+                ArrayTool.swap(array, largest, index);
+                heapAdjust(array, heapSize, largest);
+            }
+        }
     }
 }

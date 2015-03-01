@@ -68,4 +68,20 @@ public class InsertSort {
             }
         }
     }
+
+    public static void insertSort6(int array[]) {
+        for (int i = 1; i < array.length; i++) {
+            for (int j = i; j > 0 & array[j] < array[j - 1]; j--) {
+                ArrayTool.swap(array, j , j - 1);
+            }
+        }
+    }
+
+    public static void insertSort7(int array[]) {
+        for (int i = 1; i < array.length; i++) {
+            for (int j = i; j > 0 && array[j] < array[j - 1]; j--) {
+                ArrayTool.swap(array, j, j - 1);
+            }
+        }
+    }
 }

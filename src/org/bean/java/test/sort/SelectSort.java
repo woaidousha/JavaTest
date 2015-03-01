@@ -8,7 +8,7 @@ public class SelectSort {
 
     public static void main(String args[]) {
         int array[] = ArrayTool.buildArray();
-        selectSort2(array);
+        selectionSort3(array);
         System.out.println(Arrays.toString(array));
     }
 
@@ -55,6 +55,18 @@ public class SelectSort {
                 }
             }
             ArrayTool.swap(array, position, i);
+        }
+    }
+
+    public static void selectionSort3(int array[]) {
+        for (int i = 0; i < array.length; i++) {
+            int max = i;
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[j] > array[max]) {
+                    max = j;
+                }
+            }
+            ArrayTool.swap(array, max, i);
         }
     }
 }
